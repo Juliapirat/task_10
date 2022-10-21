@@ -36,8 +36,7 @@ export default function AddItem(props) {
             <div className="flex items-center justify-center">
             <input type="submit" 
             className="
-            bg-slate-300 hover:bg-slate-400  shadow-lg p-4 w-80 ml-4 rounded-lg text-white    
-            hover: scale-105  transition duration-500 
+           bg-slate-300 hover:bg-slate-400  text-white p-4 rounded-lg w-80
             "
             value="Добавить" />
            </div>
