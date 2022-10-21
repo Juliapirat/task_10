@@ -5,41 +5,43 @@ export default function Item(props) {
 
   const { info } = props;
 
- function handleAddClick() {
-    setTotal((prev) => prev + 1)
+  function handleAddClick() {
+    setTotal((prev) => prev + 1);
   }
 
   function handleRemoveClick() {
     if (total > 0) {
-      setTotal((prev) => prev - 1)
+      setTotal((prev) => prev - 1);
     }
   }
 
+  if (!info) {
+    return null;
+  }
+
   return (
-        <li key={info.id}>
-          <div className="item">
-            <img src={info.image} alt="item_image" className="rounded-xl" /> 
-              <div className="mx-4 mb-2 ">
-              <h2 className="my-4 font-sans font-medium text-xl">{info.name}</h2>
-              <p className="font-sans text-lg">
-                {info.desc}</p>
-              </div>
-            <div className="flex flex-row ml-2 mb-6">
-              <button
-                className="border border-red-500 bg-red-500 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-red-600 focus:outline-none focus:shadow-outline"
-                disabled={total === 0}
-                onClick={handleRemoveClick}
-              >
-                -
-              </button>
-              <h3 className="mt-4">{total ? total : ""}</h3>
-              <button 
-              className="border border-green-500 bg-green-500 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-green-600 focus:outline-none focus:shadow-outline"
-              onClick={handleAddClick}>
-                +
-              </button>
-            </div>
-          </div>
-        </li>
+    <div >
+      <div className="flex items-center justify-center ">
+        <div className="flex flex-row mb-2">
+        <h2 className="text-lg mr-4">{info.name}</h2>
+        <p className="text-lg">{info.desc}</p>
+        </div>
+      </div>
+      <div className="flex  flex-col items-center justify-center mb-4">
+      <div className="flex flex-row">
+        <button
+          className="mr-4"
+          disabled={total === 0}
+          onClick={handleRemoveClick}
+        >
+          -
+        </button>
+        <h3 >{total ? total : ""}</h3>
+        <button className="ml-4" onClick={handleAddClick}>
+          +
+        </button>
+      </div>
+      </div>
+    </div>
   );
 }
